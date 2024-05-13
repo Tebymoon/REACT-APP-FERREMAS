@@ -34,8 +34,8 @@ Para poder levantar esta APP y consumir la API es necesario cumplir con los prer
 Para poder levantar la API como servidor debemos encapsularla en un contenedor con Docker, esto se hace corriendo el `"Dockerfile"` con comandos.
 
 ```bash
-docker build -t api-rest-ferremas .
-docker run -p 3000:3000 api-rest-ferremas
+docker build -t api-ferremass .
+docker run -p 4000:4000 api-ferremas
 ```
 
 **NOTA:** Debe estar abierto el **"Docker Desktop"** para levantar la API con el contenedor.
