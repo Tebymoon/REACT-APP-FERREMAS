@@ -1,0 +1,12 @@
+# Ignorar node_modules
+node_modules/
+npm-debug.log
+
+# Ignorar archivos de logs
+*.log
+
+# Ignorar directorio de caché de npm
+.npm
+
+# Ignorar archivos de configuración específicos del entorno local
+.env
