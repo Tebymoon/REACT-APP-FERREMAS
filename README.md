@@ -1,6 +1,8 @@
 
 # REACT APP FERREMAS
 
+#### ADVERTENCIA: Se demora un poco en mostrar los productos en la vista productos debido a que las peticiones no estan tan optimizadas. Hay que esperar unos segundos.
+
 ## Tabla de Contenidos:
 
 - [Prerrequisitos](#uno)
