@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { Grid, Card, CardContent, Typography, Pagination } from '@mui/material';
+import { Grid, Card, CardContent, Typography, CardMedia, Pagination, Link } from '@mui/material';
 
 interface Product {
   codigo_producto: string;
@@ -29,7 +29,7 @@ const ProductCatalog: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get<Product[]>('http://localhost:4000/productos');
+        const response = await axios.get<Product[]>('https://api-rest-ferremas.up.railway.app/productos');
         const filteredProducts = searchQuery
           ? response.data.filter((product) =>
               product.nombre.toLowerCase().includes(searchQuery.toLowerCase())
@@ -60,6 +60,16 @@ const ProductCatalog: React.FC = () => {
         {currentProducts.map((product) => (
           <Grid item key={product.codigo_producto} xs={12} sm={6} md={4} lg={3}>
             <Card>
+              {product.foto && (
+                <Link href="#" underline="none">
+                  <CardMedia
+                    component="img"
+                    height="250"
+                    image={product.foto}
+                    alt={product.nombre}
+                  />
+                </Link>
+              )}
               <CardContent>
                 <Typography variant="h5" component="div">
                   {product.nombre}
