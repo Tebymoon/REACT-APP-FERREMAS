@@ -14,17 +14,20 @@ import {
     TableRow,
     Paper,
     Container,
-    Box
+    Box,
+    Dialog as ConfirmationDialog,
+    DialogActions as ConfirmationDialogActions,
+    DialogContent as ConfirmationDialogContent,
+    DialogTitle as ConfirmationDialogTitle
 } from '@mui/material';
 import { getInventories, createInventory, updateInventory, deleteInventory, Inventory } from '../services/inventoryService';
-import { Dialog as ConfirmationDialog, DialogActions as ConfirmationDialogActions, DialogContent as ConfirmationDialogContent, DialogTitle as ConfirmationDialogTitle } from '@mui/material';
 
 const InventoryManager: React.FC = () => {
     const [inventories, setInventories] = useState<Inventory[]>([]);
     const [open, setOpen] = useState(false);
     const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
     const [inventoryToDelete, setInventoryToDelete] = useState<number | null>(null);
-    const [newInventory, setNewInventory] = useState({ id_product: 0, id_location: 0, quantity: 0 });
+    const [newInventory, setNewInventory] = useState({ id_product: 0, id_location: 0, quantity: 0, min_level: 0 });
     const [selectedInventory, setSelectedInventory] = useState<Inventory | null>(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
@@ -71,7 +74,8 @@ const InventoryManager: React.FC = () => {
         setNewInventory({
             id_product: inventory.id_product,
             id_location: inventory.id_location,
-            quantity: inventory.quantity
+            quantity: inventory.quantity,
+            min_level: inventory.min_level
         });
         handleOpen();
     };
@@ -134,6 +138,7 @@ const InventoryManager: React.FC = () => {
                                 <TableCell>ID Producto</TableCell>
                                 <TableCell>ID Ubicación</TableCell>
                                 <TableCell>Cantidad</TableCell>
+                                <TableCell>Nivel Mínimo</TableCell>
                                 <TableCell>Acciones</TableCell>
                             </TableRow>
                         </TableHead>
@@ -144,6 +149,7 @@ const InventoryManager: React.FC = () => {
                                     <TableCell>{inventory.id_product}</TableCell>
                                     <TableCell>{inventory.id_location}</TableCell>
                                     <TableCell>{inventory.quantity}</TableCell>
+                                    <TableCell>{inventory.min_level}</TableCell>
                                     <TableCell>
                                         <Button 
                                             variant="outlined" 
@@ -196,6 +202,16 @@ const InventoryManager: React.FC = () => {
                         type="number"
                         fullWidth
                         value={newInventory.quantity}
+                        onChange={handleChange}
+                        sx={{ '& .MuiInputLabel-root.Mui-focused': { color: '#F55E00' }, '& .MuiOutlinedInput-root': { '&.Mui-focused fieldset': { borderColor: '#F55E00' } } }}
+                    />
+                    <TextField
+                        margin="dense"
+                        name="min_level"
+                        label="Nivel Mínimo"
+                        type="number"
+                        fullWidth
+                        value={newInventory.min_level}
                         onChange={handleChange}
                         sx={{ '& .MuiInputLabel-root.Mui-focused': { color: '#F55E00' }, '& .MuiOutlinedInput-root': { '&.Mui-focused fieldset': { borderColor: '#F55E00' } } }}
                     />

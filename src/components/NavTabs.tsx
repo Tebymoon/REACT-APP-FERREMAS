@@ -12,6 +12,15 @@ const NavTabs: React.FC = () => {
       '& .MuiTabs-indicator': { backgroundColor: '#F55E00' } 
     }}>
       <Tabs centered>
+      <Tab 
+          label="Niveles" 
+          component={Link} 
+          to="/niveles" 
+          sx={{ 
+            '&.Mui-selected': { color: '#F55E00' },
+            '&:hover': { color: '#e55000' }
+          }} 
+        />
         <Tab 
           label="Productos" 
           component={Link} 

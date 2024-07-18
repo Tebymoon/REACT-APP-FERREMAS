@@ -12,6 +12,9 @@ export interface Inventory {
     id_product: number;
     id_location: number;
     quantity: number;
+    min_level: number;
+    created_at: string;
+    updated_at: string;
 }
 
 // Obtener todos los inventarios
@@ -37,7 +40,7 @@ export const getInventoryById = async (id: number): Promise<Inventory | null> =>
 };
 
 // Crear un nuevo inventario
-export const createInventory = async (inventory: Omit<Inventory, 'id_inventory'>): Promise<Inventory | null> => {
+export const createInventory = async (inventory: Omit<Inventory, 'id_inventory' | 'created_at' | 'updated_at'>): Promise<Inventory | null> => {
     try {
         const response = await api.post('/', inventory);
         return response.data;
@@ -48,7 +51,7 @@ export const createInventory = async (inventory: Omit<Inventory, 'id_inventory'>
 };
 
 // Actualizar un inventario
-export const updateInventory = async (id: number, inventory: Partial<Inventory>): Promise<Inventory | null> => {
+export const updateInventory = async (id: number, inventory: Partial<Omit<Inventory, 'created_at' | 'updated_at'>>): Promise<Inventory | null> => {
     try {
         const response = await api.put(`/${id}`, inventory);
         return response.data;

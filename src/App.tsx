@@ -9,6 +9,7 @@ import FeaturedProducts from './components/FeaturedProducts';
 import ProductCatalog from './ProductCatalog';
 import {CreateProduct} from './components/CreateProduct';
 import InventoryManager from './components/InventoryManager';
+import InventoryNotification from './components/InventoryNotification';
 
 const HomePage: React.FC = () => (
   <>
@@ -26,7 +27,8 @@ const App: React.FC = () => {
       <Container maxWidth="lg" sx={{ marginTop: 4 }} >
         <Paper style={{ padding: '20px'}}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<InventoryNotification />} />
+            <Route path="/niveles" element={<InventoryNotification />} />
             <Route path="/productos" element={<ProductCatalog />} />
             <Route path="/producto" element={<CreateProduct/>} />
             <Route path="/inventario-man" element={<InventoryManager/>} />
