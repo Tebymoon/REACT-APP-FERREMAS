@@ -1,6 +1,5 @@
-// src/components/Navbar.tsx
 import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, InputBase, Badge, Container, Grid } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Typography, InputBase, Badge, Container, Grid, Box } from '@mui/material';
 import { Search, ShoppingCart } from '@mui/icons-material';
 import { styled, alpha } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +8,8 @@ const SearchBar = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
+  marginLeft: theme.spacing(2),
+  marginRight: theme.spacing(2),
   width: '100%',
   display: 'flex',
 }));
@@ -45,16 +46,20 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" sx={{ backgroundColor: '#F55E00' }}>
       <Container>
         <Toolbar disableGutters>
           <Grid container alignItems="center">
-            <Grid item xs={2}>
-              <Typography variant="h6" noWrap component="div" style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
-                FERREMAS
-              </Typography>
+            <Grid item xs={12} sm={2} display="flex" justifyContent="flex-start">
+              <Box
+                component="img"
+                src="/img/logo-simusa.png"
+                alt="Logo Simusa"
+                sx={{ height: 'auto', maxHeight: '64px', width: 'auto', maxWidth: '150px', cursor: 'pointer' }}
+                onClick={() => navigate('/')}
+              />
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={12} sm={8}>
               <SearchBar>
                 <SearchIconWrapper>
                   <Search />
@@ -68,14 +73,9 @@ const Navbar: React.FC = () => {
                 />
               </SearchBar>
             </Grid>
-            <Grid item xs={2} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
-              <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <ShoppingCart />
-                </Badge>
-              </IconButton>
+            <Grid item xs={12} sm={2} display="flex" justifyContent="flex-end" alignItems="center">
               <Typography variant="body1" sx={{ marginLeft: 2, cursor: 'pointer' }} onClick={() => console.log('Ingresar')}>
-                Ingresar
+                Salir
               </Typography>
             </Grid>
           </Grid>

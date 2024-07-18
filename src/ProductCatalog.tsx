@@ -56,7 +56,7 @@ const ProductCatalog: React.FC = () => {
 
   return (
     <>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} >
         {currentProducts.map((product) => (
           <Grid item key={product.codigo_producto} xs={12} sm={6} md={4} lg={3}>
             <Card>

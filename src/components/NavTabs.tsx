@@ -1,14 +1,35 @@
-// src/components/NavTabs.tsx
 import React from 'react';
 import { Tabs, Tab, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const NavTabs: React.FC = () => {
   return (
-    <Box sx={{ bgcolor: 'background.paper', display: 'flex', justifyContent: 'center' }}>
+    <Box sx={{ 
+      bgcolor: '#E6E6E6', 
+      display: 'flex', 
+      justifyContent: 'center', 
+      py: 2, 
+      '& .MuiTabs-indicator': { backgroundColor: '#F55E00' } 
+    }}>
       <Tabs centered>
-        <Tab label="Productos" component={Link} to="/productos" />
-        <Tab label="Contacto" component={Link} to="/contacto" />
+        <Tab 
+          label="Productos" 
+          component={Link} 
+          to="/producto" 
+          sx={{ 
+            '&.Mui-selected': { color: '#F55E00' },
+            '&:hover': { color: '#e55000' }
+          }} 
+        />
+        <Tab 
+          label="Inventario" 
+          component={Link} 
+          to="/inventario-man" 
+          sx={{ 
+            '&.Mui-selected': { color: '#F55E00' },
+            '&:hover': { color: '#e55000' }
+          }} 
+        />
       </Tabs>
     </Box>
   );
